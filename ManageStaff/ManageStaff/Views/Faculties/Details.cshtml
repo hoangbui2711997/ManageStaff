@@ -1,0 +1,42 @@
+﻿@model ManageStaff.Models.Faculty
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Faculty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FacultyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacultyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacultyPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacultyPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Code }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

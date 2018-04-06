@@ -1,0 +1,90 @@
+﻿@model ManageStaff.Models.Subject
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Subject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfCredit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfCredit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfLesson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfLesson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfTheory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfTheory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfExercise)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfExercise)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDiscussion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDiscussion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfPractice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfPractice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExamForm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamForm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeView)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeView)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Code }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

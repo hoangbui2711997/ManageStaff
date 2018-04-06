@@ -1,0 +1,50 @@
+﻿@model ManageStaff.Models.StaffDocument
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StaffDocument</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Document.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PagesWrite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PagesWrite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thread)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thread)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model ManageStaff.Models.StaffGraduated
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StaffGraduated</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Graduating.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduating.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descript)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descript)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
