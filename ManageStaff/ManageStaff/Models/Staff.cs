@@ -36,6 +36,8 @@ namespace ManageStaff.Models
         [Required, StringLength(200)]
         public String ResearchInterests { get; set; }
 
+        [Required, DataType(DataType.ImageUrl)]
+        public String ImageStaff { get; set; }
         //[StringLength(10)]
         //public ICollection<ImageStaff> ImageStaffs { get; set; }
 

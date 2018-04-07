@@ -13,7 +13,7 @@ namespace ManageStaff.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804062101128_Initial"; }
+            get { return "201804070231010_Initial"; }
         }
         
         string IMigrationMetadata.Source

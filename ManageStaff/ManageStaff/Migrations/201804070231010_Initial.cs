@@ -26,16 +26,17 @@ namespace ManageStaff.Migrations
                         PhoneNumber = c.String(nullable: false, maxLength: 20),
                         Email = c.String(nullable: false, maxLength: 50),
                         ResearchInterests = c.String(nullable: false, maxLength: 200),
-                        Academic_Code = c.String(maxLength: 10),
-                        Degree_Code = c.String(maxLength: 10),
-                        EducationField_Code = c.String(maxLength: 10),
-                        Position_Code = c.String(maxLength: 10),
+                        ImageStaff = c.String(nullable: false),
+                        Academic_Code = c.String(nullable: false, maxLength: 10),
+                        Degree_Code = c.String(nullable: false, maxLength: 10),
+                        EducationField_Code = c.String(nullable: false, maxLength: 10),
+                        Position_Code = c.String(nullable: false, maxLength: 10),
                     })
                 .PrimaryKey(t => t.Code)
-                .ForeignKey("dbo.Academics", t => t.Academic_Code)
-                .ForeignKey("dbo.Degrees", t => t.Degree_Code)
-                .ForeignKey("dbo.EducationFields", t => t.EducationField_Code)
-                .ForeignKey("dbo.Positions", t => t.Position_Code)
+                .ForeignKey("dbo.Academics", t => t.Academic_Code, cascadeDelete: true)
+                .ForeignKey("dbo.Degrees", t => t.Degree_Code, cascadeDelete: true)
+                .ForeignKey("dbo.EducationFields", t => t.EducationField_Code, cascadeDelete: true)
+                .ForeignKey("dbo.Positions", t => t.Position_Code, cascadeDelete: true)
                 .Index(t => t.Academic_Code)
                 .Index(t => t.Degree_Code)
                 .Index(t => t.EducationField_Code)
