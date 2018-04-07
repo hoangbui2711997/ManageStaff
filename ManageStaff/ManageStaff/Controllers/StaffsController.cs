@@ -18,7 +18,8 @@ namespace ManageStaff.Controllers
         // GET: Staffs
         public ActionResult Index()
         {
-            return View(db.Staffs.ToList());
+            var staffs = db.Staffs.Include(s => s.Academic).Include(s => s.Degree).Include(s => s.EducationField).Include(s => s.Position);
+            return View(staffs.ToList());
         }
 
         // GET: Staffs/Details/5
@@ -39,6 +40,10 @@ namespace ManageStaff.Controllers
         // GET: Staffs/Create
         public ActionResult Create()
         {
+            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name");
+            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name");
+            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name");
+            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name");
             return View();
         }
 
@@ -47,7 +52,7 @@ namespace ManageStaff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Code,Name,PhoneNumber,Email,ResearchInterests,ImageStaff")] Staff staff)
+        public ActionResult Create([Bind(Include = "Code,Name,DegreeCode,AcademicCode,PositionCode,EducationFieldCode,PhoneNumber,Email,ResearchInterests,ImageStaff")] Staff staff)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +61,10 @@ namespace ManageStaff.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name", staff.AcademicCode);
+            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name", staff.DegreeCode);
+            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name", staff.EducationFieldCode);
+            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name", staff.PositionCode);
             return View(staff);
         }
 
@@ -71,6 +80,10 @@ namespace ManageStaff.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name", staff.AcademicCode);
+            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name", staff.DegreeCode);
+            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name", staff.EducationFieldCode);
+            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name", staff.PositionCode);
             return View(staff);
         }
 
@@ -79,7 +92,7 @@ namespace ManageStaff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Code,Name,PhoneNumber,Email,ResearchInterests,ImageStaff")] Staff staff)
+        public ActionResult Edit([Bind(Include = "Code,Name,DegreeCode,AcademicCode,PositionCode,EducationFieldCode,PhoneNumber,Email,ResearchInterests,ImageStaff")] Staff staff)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +100,10 @@ namespace ManageStaff.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name", staff.AcademicCode);
+            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name", staff.DegreeCode);
+            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name", staff.EducationFieldCode);
+            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name", staff.PositionCode);
             return View(staff);
         }
 

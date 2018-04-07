@@ -191,6 +191,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804070259594_Initial.cs" />
+    <Compile Include="Migrations\201804070259594_Initial.Designer.cs">
+      <DependentUpon>201804070259594_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Academic.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -283,21 +287,11 @@
     <Content Include="Views\Academics\Details.cshtml" />
     <Content Include="Views\Academics\Edit.cshtml" />
     <Content Include="Views\Academics\Index.cshtml" />
-    <Content Include="Views\Courses\Create.cshtml" />
-    <Content Include="Views\Courses\Delete.cshtml" />
-    <Content Include="Views\Courses\Details.cshtml" />
-    <Content Include="Views\Courses\Edit.cshtml" />
-    <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\Documents\Create.cshtml" />
     <Content Include="Views\Documents\Delete.cshtml" />
     <Content Include="Views\Documents\Details.cshtml" />
     <Content Include="Views\Documents\Edit.cshtml" />
     <Content Include="Views\Documents\Index.cshtml" />
-    <Content Include="Views\EducationFields\Create.cshtml" />
-    <Content Include="Views\EducationFields\Delete.cshtml" />
-    <Content Include="Views\EducationFields\Details.cshtml" />
-    <Content Include="Views\EducationFields\Edit.cshtml" />
-    <Content Include="Views\EducationFields\Index.cshtml" />
     <Content Include="Views\Faculties\Create.cshtml" />
     <Content Include="Views\Faculties\Delete.cshtml" />
     <Content Include="Views\Faculties\Details.cshtml" />
@@ -338,6 +332,16 @@
     <Content Include="Views\Staffs\Details.cshtml" />
     <Content Include="Views\Staffs\Edit.cshtml" />
     <Content Include="Views\Staffs\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\EducationFields\Create.cshtml" />
+    <Content Include="Views\EducationFields\Delete.cshtml" />
+    <Content Include="Views\EducationFields\Details.cshtml" />
+    <Content Include="Views\EducationFields\Edit.cshtml" />
+    <Content Include="Views\EducationFields\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -349,6 +353,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804070259594_Initial.resx">
+      <DependentUpon>201804070259594_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

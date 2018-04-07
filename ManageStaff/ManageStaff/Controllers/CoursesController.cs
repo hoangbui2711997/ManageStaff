@@ -18,7 +18,8 @@ namespace ManageStaff.Controllers
         // GET: Courses
         public ActionResult Index()
         {
-            return View(db.Courses.ToList());
+            var courses = db.Courses.Include(c => c.Staff).Include(c => c.Subject);
+            return View(courses.ToList());
         }
 
         // GET: Courses/Details/5
@@ -39,6 +40,8 @@ namespace ManageStaff.Controllers
         // GET: Courses/Create
         public ActionResult Create()
         {
+            ViewBag.StaffCode = new SelectList(db.Staffs, "Code", "Name");
+            ViewBag.SubjectCode = new SelectList(db.Subjects, "Code", "SubjectName");
             return View();
         }
 
@@ -47,7 +50,7 @@ namespace ManageStaff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Code,LectureRoom,NumberOfStudent")] Course course)
+        public ActionResult Create([Bind(Include = "Code,StaffCode,SubjectCode,LectureRoom,NumberOfStudent")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +59,8 @@ namespace ManageStaff.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.StaffCode = new SelectList(db.Staffs, "Code", "Name", course.StaffCode);
+            ViewBag.SubjectCode = new SelectList(db.Subjects, "Code", "SubjectName", course.SubjectCode);
             return View(course);
         }
 
@@ -71,6 +76,8 @@ namespace ManageStaff.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StaffCode = new SelectList(db.Staffs, "Code", "Name", course.StaffCode);
+            ViewBag.SubjectCode = new SelectList(db.Subjects, "Code", "SubjectName", course.SubjectCode);
             return View(course);
         }
 
@@ -79,7 +86,7 @@ namespace ManageStaff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Code,LectureRoom,NumberOfStudent")] Course course)
+        public ActionResult Edit([Bind(Include = "Code,StaffCode,SubjectCode,LectureRoom,NumberOfStudent")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +94,8 @@ namespace ManageStaff.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StaffCode = new SelectList(db.Staffs, "Code", "Name", course.StaffCode);
+            ViewBag.SubjectCode = new SelectList(db.Subjects, "Code", "SubjectName", course.SubjectCode);
             return View(course);
         }
 

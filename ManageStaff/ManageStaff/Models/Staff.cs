@@ -15,16 +15,28 @@ namespace ManageStaff.Models
         [Required, StringLength(50)]
         public String Name { get; set; }
 
-        [Required]
+        [Required, StringLength(10)]
+        public String DegreeCode { get; set; }
+
+        [Required, StringLength(10)]
+        public String AcademicCode { get; set; }
+
+        [Required, StringLength(10)]
+        public String PositionCode { get; set; }
+
+        [Required, StringLength(10)]
+        public String EducationFieldCode { get; set; }
+
+        [ForeignKey("DegreeCode")]
         public Degree Degree { get; set; }
 
-        [Required]
+        [ForeignKey("AcademicCode")]
         public Academic Academic { get; set; }
 
-        [Required]
+        [ForeignKey("PositionCode")]
         public Position Position { get; set; }
 
-        [Required]
+        [ForeignKey("EducationFieldCode")]
         public EducationField EducationField { get; set; }
 
         [Required, StringLength(20)]

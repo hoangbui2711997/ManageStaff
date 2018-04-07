@@ -18,7 +18,8 @@ namespace ManageStaff.Controllers
         // GET: EducationFields
         public ActionResult Index()
         {
-            return View(db.EducationFields.ToList());
+            var educationFields = db.EducationFields.Include(e => e.Faculty);
+            return View(educationFields.ToList());
         }
 
         // GET: EducationFields/Details/5
@@ -39,6 +40,7 @@ namespace ManageStaff.Controllers
         // GET: EducationFields/Create
         public ActionResult Create()
         {
+            ViewBag.FalcutyCode = new SelectList(db.Facultys, "Code", "FacultyName");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace ManageStaff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Code,Name,CodeView")] EducationField educationField)
+        public ActionResult Create([Bind(Include = "Code,Name,FalcutyCode,CodeView")] EducationField educationField)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace ManageStaff.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.FalcutyCode = new SelectList(db.Facultys, "Code", "FacultyName", educationField.FalcutyCode);
             return View(educationField);
         }
 
@@ -71,6 +74,7 @@ namespace ManageStaff.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.FalcutyCode = new SelectList(db.Facultys, "Code", "FacultyName", educationField.FalcutyCode);
             return View(educationField);
         }
 
@@ -79,7 +83,7 @@ namespace ManageStaff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Code,Name,CodeView")] EducationField educationField)
+        public ActionResult Edit([Bind(Include = "Code,Name,FalcutyCode,CodeView")] EducationField educationField)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace ManageStaff.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.FalcutyCode = new SelectList(db.Facultys, "Code", "FacultyName", educationField.FalcutyCode);
             return View(educationField);
         }
 

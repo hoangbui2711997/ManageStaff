@@ -12,6 +12,18 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Academic.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Degree.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EducationField.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position.Name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -31,6 +43,18 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Academic.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Degree.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EducationField.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position.Name)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>

@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ManageStaff.Models
 {
+    /// <summary>
+    /// Position là chức vụ
+    /// </summary>
     public class Position
     {
         public Position()
