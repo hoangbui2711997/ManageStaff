@@ -2,7 +2,7 @@ namespace ManageStaff.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class Initial : DbMigration
     {
         public override void Up()
@@ -10,28 +10,28 @@ namespace ManageStaff.Migrations
             CreateTable(
                 "dbo.Academics",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        Codeview = c.String(nullable: false, maxLength: 20),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    Codeview = c.String(nullable: true, maxLength: 20),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
             CreateTable(
                 "dbo.Staffs",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        DegreeCode = c.String(nullable: false, maxLength: 10),
-                        AcademicCode = c.String(nullable: false, maxLength: 10),
-                        PositionCode = c.String(nullable: false, maxLength: 10),
-                        EducationFieldCode = c.String(nullable: false, maxLength: 10),
-                        PhoneNumber = c.String(nullable: false, maxLength: 20),
-                        Email = c.String(nullable: false, maxLength: 50),
-                        ResearchInterests = c.String(nullable: false, maxLength: 200),
-                        ImageStaff = c.String(nullable: false),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    DegreeCode = c.String(nullable: false, maxLength: 10),
+                    AcademicCode = c.String(nullable: false, maxLength: 10),
+                    PositionCode = c.String(nullable: false, maxLength: 10),
+                    EducationFieldCode = c.String(nullable: false, maxLength: 10),
+                    PhoneNumber = c.String(nullable: true, maxLength: 20),
+                    Email = c.String(nullable: true, maxLength: 50),
+                    ResearchInterests = c.String(nullable: true, maxLength: 200),
+                    ImageStaff = c.String(nullable: true),
+                })
                 .PrimaryKey(t => t.Code)
                 .ForeignKey("dbo.Academics", t => t.AcademicCode, cascadeDelete: true)
                 .ForeignKey("dbo.Degrees", t => t.DegreeCode, cascadeDelete: true)
@@ -41,164 +41,164 @@ namespace ManageStaff.Migrations
                 .Index(t => t.AcademicCode)
                 .Index(t => t.PositionCode)
                 .Index(t => t.EducationFieldCode);
-            
+
             CreateTable(
                 "dbo.Courses",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        StaffCode = c.String(nullable: false, maxLength: 10),
-                        SubjectCode = c.String(nullable: false, maxLength: 10),
-                        LectureRoom = c.String(nullable: false, maxLength: 20),
-                        NumberOfStudent = c.Int(nullable: false),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    StaffCode = c.String(nullable: false, maxLength: 10),
+                    SubjectCode = c.String(nullable: false, maxLength: 10),
+                    LectureRoom = c.String(nullable: true, maxLength: 20),
+                    NumberOfStudent = c.Int(nullable: true),
+                })
                 .PrimaryKey(t => t.Code)
                 .ForeignKey("dbo.Staffs", t => t.StaffCode, cascadeDelete: true)
                 .ForeignKey("dbo.Subjects", t => t.SubjectCode, cascadeDelete: true)
                 .Index(t => t.StaffCode)
                 .Index(t => t.SubjectCode);
-            
+
             CreateTable(
                 "dbo.Subjects",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        SubjectName = c.String(nullable: false, maxLength: 10),
-                        NumberOfCredit = c.Int(nullable: false),
-                        NumberOfLesson = c.Int(nullable: false),
-                        NumberOfTheory = c.Int(nullable: false),
-                        NumberOfExercise = c.Int(nullable: false),
-                        NumberOfDiscussion = c.Int(nullable: false),
-                        NumberOfPractice = c.Int(nullable: false),
-                        ExamForm = c.String(nullable: false, maxLength: 20),
-                        CodeView = c.String(nullable: false, maxLength: 10),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    SubjectName = c.String(nullable: true, maxLength: 10),
+                    NumberOfCredit = c.Int(nullable: true),
+                    NumberOfLesson = c.Int(nullable: true),
+                    NumberOfTheory = c.Int(nullable: true),
+                    NumberOfExercise = c.Int(nullable: true),
+                    NumberOfDiscussion = c.Int(nullable: true),
+                    NumberOfPractice = c.Int(nullable: true),
+                    ExamForm = c.String(nullable: true, maxLength: 20),
+                    CodeView = c.String(nullable: true, maxLength: 10),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
             CreateTable(
                 "dbo.Degrees",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        CodeView = c.String(nullable: false, maxLength: 20),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    CodeView = c.String(nullable: true, maxLength: 20),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
             CreateTable(
                 "dbo.EducationFields",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        FalcutyCode = c.String(nullable: false, maxLength: 10),
-                        CodeView = c.String(nullable: false, maxLength: 20),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    FalcutyCode = c.String(nullable: false, maxLength: 10),
+                    CodeView = c.String(nullable: true, maxLength: 20),
+                })
                 .PrimaryKey(t => t.Code)
                 .ForeignKey("dbo.Faculties", t => t.FalcutyCode, cascadeDelete: true)
                 .Index(t => t.FalcutyCode);
-            
+
             CreateTable(
                 "dbo.Faculties",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        FacultyName = c.String(nullable: false, maxLength: 50),
-                        FacultyPhone = c.String(nullable: false, maxLength: 50),
-                        Email = c.String(nullable: false, maxLength: 50),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    FacultyName = c.String(nullable: false, maxLength: 50),
+                    FacultyPhone = c.String(nullable: true, maxLength: 50),
+                    Email = c.String(nullable: true, maxLength: 50),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
             CreateTable(
                 "dbo.Positions",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        CodeView = c.String(nullable: false, maxLength: 20),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    CodeView = c.String(nullable: true, maxLength: 20),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
             CreateTable(
                 "dbo.StaffDocuments",
                 c => new
-                    {
-                        StaffCode = c.String(nullable: false, maxLength: 10),
-                        DocumentCode = c.String(nullable: false, maxLength: 10),
-                        PagesWrite = c.String(nullable: false, maxLength: 50),
-                        Thread = c.String(nullable: false, maxLength: 200),
-                    })
+                {
+                    StaffCode = c.String(nullable: false, maxLength: 10),
+                    DocumentCode = c.String(nullable: false, maxLength: 10),
+                    PagesWrite = c.String(nullable: true, maxLength: 50),
+                    Thread = c.String(nullable: true, maxLength: 200),
+                })
                 .PrimaryKey(t => new { t.StaffCode, t.DocumentCode })
                 .ForeignKey("dbo.Documents", t => t.DocumentCode, cascadeDelete: true)
                 .ForeignKey("dbo.Staffs", t => t.StaffCode, cascadeDelete: true)
                 .Index(t => t.StaffCode)
                 .Index(t => t.DocumentCode);
-            
+
             CreateTable(
                 "dbo.Documents",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        DateRelease = c.DateTime(nullable: false),
-                        Link = c.String(nullable: false, maxLength: 200),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    DateRelease = c.DateTime(nullable: true),
+                    Link = c.String(nullable: true, maxLength: 200),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
             CreateTable(
                 "dbo.StaffGraduateds",
                 c => new
-                    {
-                        StaffCode = c.String(nullable: false, maxLength: 10),
-                        GraduatedCode = c.String(nullable: false, maxLength: 50),
-                        Descript = c.String(nullable: false, maxLength: 500),
-                    })
+                {
+                    StaffCode = c.String(nullable: false, maxLength: 10),
+                    GraduatedCode = c.String(nullable: false, maxLength: 50),
+                    Descript = c.String(nullable: true, maxLength: 500),
+                })
                 .PrimaryKey(t => new { t.StaffCode, t.GraduatedCode })
                 .ForeignKey("dbo.Graduatings", t => t.GraduatedCode, cascadeDelete: true)
                 .ForeignKey("dbo.Staffs", t => t.StaffCode, cascadeDelete: true)
                 .Index(t => t.StaffCode)
                 .Index(t => t.GraduatedCode);
-            
+
             CreateTable(
                 "dbo.Graduatings",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 50),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        Address = c.String(nullable: false, maxLength: 100),
-                        Time = c.String(nullable: false),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 50),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    Address = c.String(nullable: true, maxLength: 100),
+                    Time = c.String(nullable: true),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
             CreateTable(
                 "dbo.StaffProjectResearches",
                 c => new
-                    {
-                        StaffCode = c.String(nullable: false, maxLength: 10),
-                        ResearchProjectCode = c.String(nullable: false, maxLength: 10),
-                    })
+                {
+                    StaffCode = c.String(nullable: false, maxLength: 10),
+                    ResearchProjectCode = c.String(nullable: false, maxLength: 10),
+                })
                 .PrimaryKey(t => new { t.StaffCode, t.ResearchProjectCode })
                 .ForeignKey("dbo.ResearchProjects", t => t.ResearchProjectCode, cascadeDelete: true)
                 .ForeignKey("dbo.Staffs", t => t.StaffCode, cascadeDelete: true)
                 .Index(t => t.StaffCode)
                 .Index(t => t.ResearchProjectCode);
-            
+
             CreateTable(
                 "dbo.ResearchProjects",
                 c => new
-                    {
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        Level = c.String(nullable: false, maxLength: 20),
-                        Members = c.String(nullable: false, maxLength: 200),
-                        Time = c.DateTime(nullable: false),
-                        State = c.String(nullable: false, maxLength: 50),
-                        Rank = c.String(nullable: false, maxLength: 10),
-                    })
+                {
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Name = c.String(nullable: true, maxLength: 50),
+                    Level = c.String(nullable: true, maxLength: 20),
+                    Members = c.String(nullable: true, maxLength: 200),
+                    Time = c.DateTime(nullable: true),
+                    State = c.String(nullable: true, maxLength: 50),
+                    Rank = c.String(nullable: true, maxLength: 10),
+                })
                 .PrimaryKey(t => t.Code);
-            
+
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.StaffProjectResearches", "StaffCode", "dbo.Staffs");

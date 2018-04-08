@@ -1,0 +1,245 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Form Giao Vien CSDL</title>
+    <!-- Bootstrap Core CSS -->
+    @*<link href="/Desiger/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- MetisMenu CSS -->
+        <link href="/Desiger/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="/Desiger/dist/css/sb-admin-2.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="/Desiger/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <link href="/HTML/HTTT.html" rel="stylesheet" type="text/css" />*@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <asp:images></asp:images>
+                </a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts"></ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw" style="width: 200px"></i>KHOA CÔNG NGHỆ THÔNG TIN<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a class="active" href="@Url.Content("~/HTMLPage/HTTT")">HỆ THỐNG THÔNG TIN</a>
+                                    @*Html.ActionLink("HỆ THỐNG THÔNG TIN", "/HTMLPage/TableInfo")*@
+                                </li>
+                                <li>
+                                    <a class="active" href="@Url.Content("~/HTMLPage/ATTT")">AN TOÀN THÔNG TIN</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="@Url.Content("~/HTMLPage/CNPM")">CÔNG NGHỆ PHẦN MỀM</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="@Url.Content("~/HTMLPage/TTMT")">TRUNG TÂM MÁY TÍNH</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="@Url.Content("~/HTMLPage/CNM")">CÔNG NGHỆ MẠNG</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="@Url.Content("~/HTMLPage/KHMT")">KHOA HỌC MÁY TÍNH</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="@Url.Content("~/HTMLPage/Toan")">TOÁN</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/HTMLPage/DL")"><i class="fa fa-bar-chart-o fa-fw"></i> KHOA ĐỘNG LỰC</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-wrench fa-fw" style="width: 200px"></i> KHOA KĨ THUẬT ĐIỀU KHIỂN</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> KHOA HÓA LÝ - KĨ THUẬT<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a class="active" href="tables.html">BAN CHỦ NHIỆM KHOA</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables1.html">PHÒNG HÓA</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables2.html">KĨ THUẬT MÔI TRƯỜNG</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables3.html">CÔNG NGHỆ HÓA HỌC</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables4.html">VẬT LÝ</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables5.html">HÓA - LÝ KĨ THUẬT</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> KHOA VÔ TUYẾN ĐIỆN TỬ</a>
+                        </li>
+
+                        <li>
+                            <a href="tables.html"><i class="fa fa-wrench fa-fw"></i> KHOA CƠ KHÍ<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a class="active" href="tables.html">CƠ HỌC MÁY</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables1.html">CƠ HỌC VẬT RẮN</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables2.html">NHIỆT THỦY KHÍ</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables3.html">CHẾ TẠO MÁY</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables4.html">GIA CÔNG ÁP LỰC</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables5.html">VẬT LIỆU & VÀ CÔNG NGHỆ VẬT LIỆU</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables5.html">QUẢN LÝ KHOA HỌC & CÔNG NGHỆ</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="tables.html"><i class="fa fa-dashboard fa-fw" style="width:200px"></i> KHOA HÀnG KHÔNG VŨ TRỤ<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a class="active" href="tables.html">THIẾT KẾ HỆ THỐNG KẾT CẤ THIẾT BỊ BAY</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables1.html">ROBOT ĐẮC BIỆT VÀ KẾT CẤU CƠ ĐIỆN TỬ</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables2.html">CÔNG NGHỆ THIẾT BỊ VÀ HÀNG KHÔNG VŨ TRỤ</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="tables3.html">ĐỘNG CƠ PHẢN LỰC</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i>NỘI DUNG KHÁC<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a class="active" href="#">LOGIN</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- Page Content -->
+        <!-- /#page-wrapper -->
+    </div>
+
+    </div>
+    <div id="page-wrapper">
+        @RenderBody()
+    </div>
+    @*<!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="/Desiger/vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/Desiger/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="/Desiger/vendor/metisMenu/metisMenu.min.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="/Desiger/dist/js/sb-admin-2.js"></script>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

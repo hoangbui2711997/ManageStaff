@@ -68,7 +68,7 @@
             @Html.DisplayFor(modelItem => item.ResearchInterests)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageStaff)
+            <img style="max-height:150px; max-width: 80px;" src="@Url.Content(item.ImageStaff)"/>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Code }) |
