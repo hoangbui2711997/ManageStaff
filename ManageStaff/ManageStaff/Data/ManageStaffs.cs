@@ -1,40 +1,56 @@
 ﻿using ManageStaff.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ManageStaff.Data
 {
-    public class ManageStaffs : DbContext
+    public class ManageStaffs
     {
-        public DbSet<Academic> Academics { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Degree> Degrees { get; set; }
-        public DbSet<Document> Documents { get; set; }
-        public DbSet<EducationField> EducationFields { get; set; }
-        public DbSet<Faculty> Facultys { get; set; }
-        //public DbSet<ImageStaff> ImageStaffs { get; set; }
-        public DbSet<Position> Positions { get; set; }
-        public DbSet<ResearchProject> ResearchProjects { get; set; }
-        public DbSet<Staff> Staffs { get; set; }
-        public DbSet<StaffDocument> StaffDocuments { get; set; }
-        public DbSet<StaffGraduated> StaffGraduateds { get; set; }
-        public DbSet<StaffProjectResearch> StaffProjectResearchs { get; set; }
-        public DbSet<Subject> Subjects { get; set; }
+        public List<Academic> Academics { get; set; }
+        public List<Course> Courses { get; set; }
+        public List<Degree> Degrees { get; set; }
+        public List<Document> Documents { get; set; }
+        public List<EducationField> EducationFields { get; set; }
+        public List<Faculty> Facultys { get; set; }
+        //publiListmageStaff> ImageStaffs { get; set; }
+        public List<Position> Positions { get; set; }
+        public List<ResearchProject> ResearchProjects { get; set; }
+        public List<Staff> Staffs { get; set; }
+        public List<StaffDocument> StaffDocuments { get; set; }
+        public List<StaffGraduated> StaffGraduateds { get; set; }
+        public List<StaffProjectResearch> StaffProjectResearchs { get; set; }
+        public List<Subject> Subjects { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<StaffProjectResearch>().HasKey(c => new { c.StaffCode, c.ResearchProjectCode });
+        //    modelBuilder.Entity<StaffDocument>().HasKey(c => new { c.StaffCode, c.DocumentCode });
+        //    modelBuilder.Entity<StaffGraduated>().HasKey(c => new { c.StaffCode, c.GraduatedCode });
+        //    //base.OnModelCreating(modelBuilder);
+        //}
+
+        public DataTable Graduatings { get; set; }
+
+        public ManageStaffs()
         {
-            modelBuilder.Entity<StaffProjectResearch>().HasKey(c => new { c.StaffCode, c.ResearchProjectCode });
-            modelBuilder.Entity<StaffDocument>().HasKey(c => new { c.StaffCode, c.DocumentCode });
-            modelBuilder.Entity<StaffGraduated>().HasKey(c => new { c.StaffCode, c.GraduatedCode });
-            //base.OnModelCreating(modelBuilder);
+            Init();
+            
+
         }
 
-        public System.Data.Entity.DbSet<ManageStaff.Models.Graduating> Graduatings { get; set; }
+        public void Init()
+        {
+            DataTable dataOfStaff = DoWithSql.DoQuery("SELECT * FROM Staff");
+            // Convert datatable of Staff to Staff List
+            Adapters.Convert(dataOfStaff, "Staff");
+            // After convert get data from Adapter
+            Staffs = Adapters.staffs;
 
-
+        }
 
         //public ManageStaffs()
         //{

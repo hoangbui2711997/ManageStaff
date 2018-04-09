@@ -18,8 +18,9 @@ namespace ManageStaff.Controllers
         // GET: Staffs
         public ActionResult Index()
         {
-            var staffs = db.Staffs.Include(s => s.Academic).Include(s => s.Degree).Include(s => s.EducationField).Include(s => s.Position);
-            return View(staffs.ToList());
+            //var staffs = db.Staffs.Include(s => s.Academic).Include(s => s.Degree).Include(s => s.EducationField).Include(s => s.Position);
+            
+            return View(db.Staffs);
         }
 
         // GET: Staffs/Details/5
@@ -28,8 +29,10 @@ namespace ManageStaff.Controllers
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             }
-            Staff staff = db.Staffs.Find(id);
+            Staff staff = db.Staffs.Find(e => e.Code == id);
+
             if (staff == null)
             {
                 return HttpNotFound();
@@ -57,7 +60,7 @@ namespace ManageStaff.Controllers
             if (ModelState.IsValid)
             {
                 db.Staffs.Add(staff);
-                db.SaveChanges();
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -75,7 +78,7 @@ namespace ManageStaff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Staff staff = db.Staffs.Find(id);
+            Staff staff = db.Staffs.Find(e => e.Code == id);
             if (staff == null)
             {
                 return HttpNotFound();
@@ -96,8 +99,11 @@ namespace ManageStaff.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(staff).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(staff).State = EntityState.Modified;
+                //db.SaveChanges();
+                var staffs = db.Staffs.FirstOrDefault(e => e.Code == staff.Code);
+                staffs = staff;
+
                 return RedirectToAction("Index");
             }
             ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name", staff.AcademicCode);
@@ -114,7 +120,7 @@ namespace ManageStaff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Staff staff = db.Staffs.Find(id);
+            Staff staff = db.Staffs.Find(e => e.Code == id);
             if (staff == null)
             {
                 return HttpNotFound();
@@ -127,19 +133,19 @@ namespace ManageStaff.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Staff staff = db.Staffs.Find(id);
+            Staff staff = db.Staffs.Find(e => e.Code == id);
             db.Staffs.Remove(staff);
-            db.SaveChanges();
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

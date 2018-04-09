@@ -1,128 +1,128 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using ManageStaff.Data;
-using ManageStaff.Models;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Data;
+//using System.Data.Entity;
+//using System.Linq;
+//using System.Net;
+//using System.Web;
+//using System.Web.Mvc;
+//using ManageStaff.Data;
+//using ManageStaff.Models;
 
-namespace ManageStaff.Controllers
-{
-    public class AcademicsController : Controller
-    {
-        private ManageStaffs db = new ManageStaffs();
+//namespace ManageStaff.Controllers
+//{
+//    public class AcademicsController : Controller
+//    {
+//        private ManageStaffs db = new ManageStaffs();
 
-        // GET: Academics
-        public ActionResult Index()
-        {
-            return View(db.Academics.ToList());
-        }
+//        // GET: Academics
+//        public ActionResult Index()
+//        {
+//            return View(db.Academics.ToList());
+//        }
 
-        // GET: Academics/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Academic academic = db.Academics.Find(id);
-            if (academic == null)
-            {
-                return HttpNotFound();
-            }
-            return View(academic);
-        }
+//        // GET: Academics/Details/5
+//        public ActionResult Details(string id)
+//        {
+//            if (id == null)
+//            {
+//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+//            }
+//            Academic academic = db.Academics.Find(id);
+//            if (academic == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            return View(academic);
+//        }
 
-        // GET: Academics/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+//        // GET: Academics/Create
+//        public ActionResult Create()
+//        {
+//            return View();
+//        }
 
-        // POST: Academics/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Code,Name,Codeview")] Academic academic)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Academics.Add(academic);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+//        // POST: Academics/Create
+//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+//        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Create([Bind(Include = "Code,Name,Codeview")] Academic academic)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                db.Academics.Add(academic);
+//                db.SaveChanges();
+//                return RedirectToAction("Index");
+//            }
 
-            return View(academic);
-        }
+//            return View(academic);
+//        }
 
-        // GET: Academics/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Academic academic = db.Academics.Find(id);
-            if (academic == null)
-            {
-                return HttpNotFound();
-            }
-            return View(academic);
-        }
+//        // GET: Academics/Edit/5
+//        public ActionResult Edit(string id)
+//        {
+//            if (id == null)
+//            {
+//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+//            }
+//            Academic academic = db.Academics.Find(id);
+//            if (academic == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            return View(academic);
+//        }
 
-        // POST: Academics/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Code,Name,Codeview")] Academic academic)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(academic).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(academic);
-        }
+//        // POST: Academics/Edit/5
+//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+//        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Edit([Bind(Include = "Code,Name,Codeview")] Academic academic)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                db.Entry(academic).State = EntityState.Modified;
+//                db.SaveChanges();
+//                return RedirectToAction("Index");
+//            }
+//            return View(academic);
+//        }
 
-        // GET: Academics/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Academic academic = db.Academics.Find(id);
-            if (academic == null)
-            {
-                return HttpNotFound();
-            }
-            return View(academic);
-        }
+//        // GET: Academics/Delete/5
+//        public ActionResult Delete(string id)
+//        {
+//            if (id == null)
+//            {
+//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+//            }
+//            Academic academic = db.Academics.Find(id);
+//            if (academic == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            return View(academic);
+//        }
 
-        // POST: Academics/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            Academic academic = db.Academics.Find(id);
-            db.Academics.Remove(academic);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+//        // POST: Academics/Delete/5
+//        [HttpPost, ActionName("Delete")]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult DeleteConfirmed(string id)
+//        {
+//            Academic academic = db.Academics.Find(id);
+//            db.Academics.Remove(academic);
+//            db.SaveChanges();
+//            return RedirectToAction("Index");
+//        }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-    }
-}
+//        protected override void Dispose(bool disposing)
+//        {
+//            if (disposing)
+//            {
+//                db.Dispose();
+//            }
+//            base.Dispose(disposing);
+//        }
+//    }
+//}
