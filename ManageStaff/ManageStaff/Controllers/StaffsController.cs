@@ -13,7 +13,7 @@ namespace ManageStaff.Controllers
 {
     public class StaffsController : Controller
     {
-        private ManageStaffs db = new ManageStaffs();
+        private ManageStaffs db = ManageStaffs.GetInstance();
 
         // GET: Staffs
         public ActionResult Index()

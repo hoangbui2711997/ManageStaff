@@ -24,7 +24,7 @@ namespace ManageStaff.Models
             CodeView = codeView;
         }
 
-        public ICollection<Staff> Staffs { get; set; }
+        public IEnumerable<Staff> Staffs { get; set; }
 
         [Required, StringLength(10), Key]
         public String Code { get; set; }

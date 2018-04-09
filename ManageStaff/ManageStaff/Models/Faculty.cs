@@ -17,7 +17,7 @@ namespace ManageStaff.Models
         [Required, StringLength(50), EmailAddress]
         public String Email { get; set; }
 
-        public ICollection<EducationField> EducationFields { get; set; }
+        public IEnumerable<EducationField> EducationFields { get; set; }
 
         public Faculty()
         {

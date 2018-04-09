@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Academic.Name)
+            Học hàm
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Degree.Name)
+            Học vị
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EducationField.Name)
+            Bộ môn
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Position.Name)
+            Chức vụ
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Tên đầy đủ
         </dt>
 
         <dd>
@@ -51,7 +51,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Điện thoại
         </dt>
 
         <dd>
@@ -59,7 +59,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Thư điện tử
         </dt>
 
         <dd>
@@ -67,7 +67,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ResearchInterests)
+            Sở thích nghiên cứu
         </dt>
 
         <dd>
@@ -75,11 +75,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageStaff)
+            Ảnh
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageStaff)
+            <a href="@Url.Content(Model.ImageStaff)"><img src="@Url.Content(Model.ImageStaff)" alt="Ảnh của @Model.Name" style="max-height: 160px; max-width: 320px; border: solid 1px red;" /></a>
         </dd>
 
     </dl>

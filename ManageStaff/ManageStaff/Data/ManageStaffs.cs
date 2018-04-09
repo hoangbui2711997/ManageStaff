@@ -35,21 +35,50 @@ namespace ManageStaff.Data
 
         public DataTable Graduatings { get; set; }
 
-        public ManageStaffs()
+        private static ManageStaffs getInstance;
+
+        public static ManageStaffs GetInstance()
+        {
+            if (getInstance == null)
+            {
+                getInstance = new ManageStaffs();
+            } else
+            {
+
+            }
+            return getInstance;
+        }
+
+        private ManageStaffs()
         {
             Init();
-            
-
         }
 
         public void Init()
         {
-            DataTable dataOfStaff = DoWithSql.DoQuery("SELECT * FROM Staff");
-            // Convert datatable of Staff to Staff List
-            Adapters.Convert(dataOfStaff, "Staff");
-            // After convert get data from Adapter
-            Staffs = Adapters.staffs;
+            DataTable dataOfStaff = DoWithSql.DoQuery("SELECT * FROM Faculty");
+            DataTable dataOfStaff1 = DoWithSql.DoQuery("SELECT * FROM EducationField");
+            DataTable dataOfStaff2 = DoWithSql.DoQuery("SELECT * FROM Academic");
+            DataTable dataOfStaff3 = DoWithSql.DoQuery("SELECT * FROM Position");
+            DataTable dataOfStaff4 = DoWithSql.DoQuery("SELECT * FROM Degree");
+            DataTable dataOfStaff5 = DoWithSql.DoQuery("SELECT * FROM Staff");
 
+            // Convert datatable of Staff to Staff List
+            Adapters.Convert(dataOfStaff, "Faculty");
+            Adapters.Convert(dataOfStaff1, "EducationField");
+            Adapters.Convert(dataOfStaff2, "Academic");
+            Adapters.Convert(dataOfStaff3, "Position");
+            Adapters.Convert(dataOfStaff4, "Degree");
+            Adapters.Convert(dataOfStaff5, "Staff");
+
+            // After convert get data from Adapter
+            Facultys = Adapters.faculties.ToList();
+            EducationFields = Adapters.educationFields.ToList();
+            Academics = Adapters.academics.ToList();
+            Positions = Adapters.positions.ToList();
+            Degrees = Adapters.degrees.ToList();
+            Staffs = Adapters.staffs.ToList();
+           
         }
 
         //public ManageStaffs()
