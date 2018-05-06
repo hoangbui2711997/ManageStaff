@@ -12,6 +12,7 @@ using ManageStaff.Models;
 
 namespace ManageStaff.Controllers
 {
+  
     [Authorize]
     public class AccountController : Controller
     {

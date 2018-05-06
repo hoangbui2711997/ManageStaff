@@ -1,4 +1,7 @@
-﻿@{
+﻿@using ManageStaff.Models
+@model LoginViewModel
+
+@{
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
@@ -15,3 +18,77 @@
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+<section name="modal">
+    <div class="modal fade" id="btn-login" tabindex="-1" role="dialog" aria-labelledby="btn-login" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="btn-login">Login Management</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background-color: #d3d3d330;">
+                    <div class="row">
+                        <div class="col-12">
+                            <section id="loginForm">
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <h5>Use a local account to log in.</h5>
+                                    <hr />
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                                <div class="col-md-8">
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-offset-2 col-8">
+                                                    <div class="checkbox">
+                                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                                        @Html.LabelFor(m => m.RememberMe)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-8 col-offset-2">
+                                                    <input type="submit" value="Log in" class="btn primary-bg-color" />
+                                                    @Html.ActionLink("Forgotten Account?", "ForgotPassword", "Account", new { @class = "btn btn-default float-right" })
+                                                </div>
+                                            </div>
+
+
+
+                                            @* Enable this once you have account confirmation enabled for password reset functionality
+                                                <p>
+                                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                                </p>*@
+                                }
+                            </section>
+                        </div>
+                        @*<div class="col-md-4">
+                                <section id="socialLoginForm">
+                                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                                </section>
+                            </div>*@
+                    </div>
+                </div>
+                @*<div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</section>

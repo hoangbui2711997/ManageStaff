@@ -4,41 +4,215 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+    <style>
+        /** {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }*/
+
+        /*body {
+            font-size: 10px;
+        }*/
+    </style>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-vue.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @*<style>
+            ul li {
+
+            }
+
+            ul li:not(:last-child) {
+                margin-right: 3rem;
+            }
+        </style>*@
+    <style>
+        @@keyframes moveInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            80% {
+                transform: translateX(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @@keyframes moveInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            80% {
+                transform: translateX(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @@keyframes moveInBottom {
+            0% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            80% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        html {
+            /*font: 10px*/
+            /*font-size: 62.5%;*/
+        }
+
+        body {
+            min-width: 430px;
+            height: 100vh;
+            max-width: 100vw;
+            background-color: #d3d3d330;
+
+            /*box-sizing: border-box;*/
+        }
+
+        [class="nav-item"] a:link,
+        [class="nav-item"] a:visited,
+        [class="nav-item"] span{
+            text-transform: uppercase;
+            margin: 0px 10px;
+            text-decoration: none;
+            color: #ffff8e;
+            font-weight: 500;
+            transition: all .2s ease-in-out;
+            /*Mau nen*/
+        }
+
+        .nav-item span {
+            border-style: none;
+            border-width: 0;
+            outline: 0;
+            font-weight: 500 !important;
+        }
+
+        .nav-item a:hover,
+        .nav-item span:hover {
+            /*outline: 1rem solid #ffff8e;*/
+            border-bottom: 0.6rem solid #ffff8e;
+            /*transform: skewY(2deg) skewX(15deg);*/
+            text-shadow: 0.5rem 2rem 4rem rgba(0, 0, 0, 0.7);
+        }
+
+        /*ul:hover a:not(:hover) {
+            background-color: blue;
+            text-shadow: 0.5rem 2rem 4rem rgba(0, 0, 0, 0.7);   
+        }*/
+
+        [class="nav-item"] a:active {
+            transform: translateY(-6px);
+        }
+
+
+        ul li:not(:first-child) {
+            margin-left: 2rem;
+        }
+
+        ul li:first-child {
+            margin-left: 2rem;
+        }
+
+        .primary-bg-color {
+            background-color: rgba(126, 213, 111, 0.6);
+        }
+
+        .primary-font-color {
+            color: #ffff8e;
+            font-weight: 300;
+        }
+
+        .footer {
+            font-size: .8rem;
+            bottom: 0px !important;
+        }
+
+        .pages {
+            background-color: #F5F5BD;
+            border-radius: .5rem;
+            outline: 0.5rem solid white;
+            padding: 1.5rem 1rem .8rem 1rem;
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <section class="" name="header">
+        <nav class="navbar navbar-toggleable-md sticky-top primary-bg-color">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <a href="@Url.Content("~/Home")" class="navbar-brand">
+                    <img src="@Url.Content("~/imageStaff/LogoHome.jpg")" width=40px height=40px class="img-responsive hidden-xs-down" />
+                    <img src="@Url.Content("~/imageStaff/LogoHome_.png")" width=320px height=40px class="img-responsive" />
+                </a>
+
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span style="font-weight: 700; margin: auto; font-size: 2rem;">&darr;</span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div class="navbar-collapse collapse text-md-right mt-md-3">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("Management", "Index", "Staffs")</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="nav-divider"><hr /></li>
                 </ul>
+
                 @Html.Partial("_LoginPartial")
             </div>
-        </div>
-    </div>
-    <div class="container body-content">
+        </nav>
+    </section>
+
+    <div class="container-fluid col-lg-8 col-lg-offset-2 col-md-8 col-md-2 col-sm-10 col-sm-offset-1 col-xs-12">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
+
+    <section class="primary-bg-color p-3 pl-5 footer">
+        <div class="primary-font-color">
+            <h5 class="text-center"> NHÓM 2-QUẢN LÝ GIÁO VIÊN-THỰC TẬP CƠ SỞ DỮ LIỆU-HỌC VIỆN KĨ THUẬT QUÂN SỰ </h5>
+            <span class="glyphicon glyphicon-home" aria-hidden="true">Địa chỉ: 236 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</span> </br>
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true">Email: truongton97tb@gmail.com</span> </br>
+            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true">Điện thoại: 0964367495</span>
+        </div>
+    </section>
+
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-vue.js"></script>
+    <script src="~/Scripts/polyfill.min.js"></script>
+    <script src="~/Scripts/vue.js"></script>
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

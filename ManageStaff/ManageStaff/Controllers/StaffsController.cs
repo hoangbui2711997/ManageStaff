@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using ManageStaff.Data;
 using ManageStaff.Models;
+using ManageStaff.Data;
+using System.Net;
 
 namespace ManageStaff.Controllers
 {
@@ -18,6 +13,10 @@ namespace ManageStaff.Controllers
         // GET: Staffs
         public ActionResult Index()
         {
+            if(User == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             //var staffs = db.Staffs.Include(s => s.Academic).Include(s => s.Degree).Include(s => s.EducationField).Include(s => s.Position);
             
             return View(db.Staffs);

@@ -44,31 +44,91 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Academic.Name)
+            @if (item.Academic != null && item.Academic.Name != null)
+            {
+                @Html.DisplayFor(modelItem => item.Academic.Name)
+            }
+            else
+            {
+                <span style="color: red;">Chưa có thông tin</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Degree.Name)
+            @if(item.Degree != null && item.Degree.Name != null)
+            {
+                @Html.DisplayFor(modelItem => item.Degree.Name)
+            }
+            else
+            {
+                <span style="color: red;">Chưa có thông tin</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EducationField.Name)
+            @if (item.EducationField != null && item.EducationField.Name != null)
+            {
+                @Html.DisplayFor(modelItem => item.EducationField.Name)
+            }
+            else
+            {
+                <span style="color: red;">Chưa có thông tin</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Position.Name)
+            @if (item.Position.Name != null)
+            {
+                @Html.DisplayFor(modelItem => item.Position.Name)
+            }
+            else
+            {
+                <span style="color: red;">Chưa có thông tin</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @if(item.Name != null)
+            {
+                @Html.DisplayFor(modelItem => item.Name)
+            }
+            else
+            {
+                <span style="color: red;">Chưa có thông tin</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
+            @if (item.PhoneNumber != null)
+            {
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            }
+            else
+            {
+                <span style="color: red;">Chưa có thông tin</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @if (item.Email != null)
+            {
+                @Html.DisplayFor(modelItem => item.Email)
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ResearchInterests)
+            @if (item.ResearchInterests != null)
+            {
+                @Html.DisplayFor(modelItem => item.ResearchInterests)
+            }
+            else
+            {
+                <span style="color: red;">Chưa có thông tin</span>
+            }
         </td>
         <td>
-            <img style="max-height:150px; max-width: 80px;" src="@Url.Content(item.ImageStaff)"/>
+            @if (item.ImageStaff != null)
+            {
+                <img style="max-height:150px; max-width: 80px;" src="@Url.Content(item.ImageStaff)" />
+            }
+            else
+            {
+                <img style="max-height:150px; max-width: 80px;" src="@Url.Content("~/imageStaff/KhongCoAnh.png")" />
+            }
+
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Code }) |

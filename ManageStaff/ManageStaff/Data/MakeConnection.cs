@@ -8,7 +8,7 @@ namespace ManageStaff.Data
 {
     public class MakeConnection
     {
-        const string connectionString = @"Data Source = (local)\MSSQLSERVER01; Initial Catalog = ManagerStaff; Integrated Security=True";
+        const string connectionString = @"Data Source = DESKTOP-MK3LFHG; Initial Catalog = ManagerStaff; Integrated Security=True";
 
         private SqlConnection conn;
         private static MakeConnection getInstance;

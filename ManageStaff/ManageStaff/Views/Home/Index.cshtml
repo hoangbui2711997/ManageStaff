@@ -1,311 +1,108 @@
-﻿@*@{
-        ViewBag.Title = "Home Page";
-    }
-
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿@using ManageStaff.Models
+@model LoginViewModel
+@*<div id="top">
+    <div id="img"><img src="@Url.Content("~/imageStaff/LogoHVnew1.png")" width=800px height="130px" /></div>
+    <div id="trangchu"><a href="@Url.Content("~/Home")" target="_self"><button class="btn"><i class="fa fa-home"></i>Home</button></a></div>
+    <div id="giaovien"><a href="@Url.Content("~/HomePage")" target="_blank"> <button class="btn">Giáo viên</button></a></div>
+    <div id="lienhe"> <a href="http://fit.mta.edu.vn/news/LIENHE" target="_blank"> <button class="btn">Liên hệ</button></a></a></div>
     </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
+*@
+@*<div id="input-group">
+        <input type="text" class="form-control" placeholder="Search ...">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Tìm kiếm</button>
+        </span>
     </div>*@
-@{ 
-    Layout = null;
-}
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Trang chủ</title>
-    <style type="text/css">
-
-		.btn {
-    background-color: DodgerBlue;
-    border: none;
-    color: white;
-    padding: 12px 16px;
-    font-size: 16px;
-    cursor: pointer;
-}
 
 
-.btn:hover {
-    background-color: RoyalBlue;
-}
+<section name="intro">
+    <pre class="pages">
+    <h2><span class="badge-info"></span>Introduce</h2>
+    Khoa Công nghệ Thông tin (CNTT) là một khoa chuyên ngành có bề dày lịch sử của Học viện Kỹ thuật quân sự (HVKTQS). Năm 1996, Khoa Toán Tin học được thành lập trên cơ sở bộ môn Toán Tin học (tiền thân là Bộ môn Toán) – Khoa Cơ bản, HVKTQS và đến năm 1999 thì đổi tên thành Khoa Công nghệ Thông tin (CNTT). Từ khi hình thành và phát triển đến nay, Khoa Công nghệ Thông tin luôn là một trong các khoa đào tạo chuyên ngành có uy tín của HVKTQS.
+    Khoa CNTT đang thực hiện các nhiệm vụ:
+    - Giảng dạy các môn học cơ bản thuộc lĩnh vực Toán học (Giải tích, Đại số tuyến tính và Hình giải tích, Xác suất thống kê, Toán chuyên đề) và Tin học (Nhập môn tin học, Lập trình cơ bản) cho sinh viên các ngành trong HVKTQS.
+    - Đào tạo bậc đại học ngành thuộc lĩnh vực máy tính và công nghệ thông tin:  Công nghệ thông tin, Khoa học máy tính, Hệ thống thông tin, Công nghệ phần mềm, Truyền thông và Mạng máy tính.
+    - Đào tạo bậc cao học các ngành: Khoa học máy tính, Hệ thống thông tin và Kỹ thuật phần mềm.
+    - Đào tạo nghiên cứu sinh  các ngành Toán ứng dụng và Cơ sở toán học cho tin học.
+    Chương trình đào tạo cho khối chuyên Tin học (sau này là Công nghệ thông tin) đã được triển khai từ những năm đầu 1990. Đến nay, các chương trình đào tạo ngành CNTT của Khoa thường xuyên được cập nhật để phù hợp với sự phát triển công nghệ thông tin trên thế giới và nhu cầu xã hội. Hiện nay, Khoa CNTT đang triển khai xây dựng chương trình đào tạo theo các chương trình đào tạo tiên tiến và quản lý, tổ chức đào tạo theo các tiêu chuẩn kiểm định quốc tế (AUN).
+    Với mục tiêu xây dựng Khoa Công nghệ Thông tin theo mô hình định hướng nghiên cứu, tăng cường tích hợp giữa đào tạo và nghiên cứu khoa học, hiện tại, Khoa đang triển khai một số giải pháp nhằm hình thành các nhóm nghiên cứu mạnh về các lĩnh vực của CNTT, đặc biệt là An toàn thông tin, Công nghệ mô phỏng, Trí tuệ nhân tạo, Học máy thông kê và Cơ sở Toán trong Tin học, tăng quy mô đào tạo sau đại học, hỗ trợ cho các cán bộ, giáo viên và nghiên cứu sinh trong Khoa tham gia các hội nghị khoa học khu vực và quốc tế; tăng cường hợp tác đào tạo và nghiên cứu với các trường đại học và viện nghiên cứu trên thế giới.
+    Hiện tại, Khoa CNTT có 6 bộ môn (Bộ môn Toán, Bộ môn Khoa học máy tính, Bộ môn Hệ thống thông tin, Bộ môn Công nghệ phần mềm, Bộ môn An toàn thông tin, và Bộ môn Công nghệ mạng), Trung tâm Máy tính và Bộ phận Quản lý đào tạo.
+    <i><b>Địa chỉ liên hệ: 236 Hoàng Quốc Việt – Bắc Từ Liêm – Hà Nội</b></i>
+    <i><b>Điện thoại: 04 – 37553119 hoặc 069 694747</b></i>
+    <i><b>Email: fit@mta.edu.vn</b></i>
+    </pre>
+</section>
 
-#top{
-		width: 100%;
-		height: 130px;
-		border: 1px solid black;
-		margin: 0 auto;
-
-	}
-	.footer{
-		width: 100%;
-		height: 150px;
-		margin: 0 auto;
-		background-color: green;
-		float: left;
-
-	}
-	.block{
-		padding-left: 600px;
-	}
-
-	#img{
-
-		float: left;
-	}
-
-	#trangchu{
-
-		margin: 50px;
-		float: left;
-	}
-
-	#giaovien{
-		margin: 50px;
-		float: left;
-	}
-
-	#lienhe{
-		margin: 50px;
-		float: left;
-	}
-
-	#input-group{
-		margin: 50px;
-		float: left;
-	}
-	.slideshow-container {
-  width: 70%;
-  height: 900px;
-  position: relative;
-  margin: auto;
-}
-
-
-.mySlides {
-    display: none;
-}
-
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-}
-
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-
-.fade {
-
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-    </style>
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-
-<body>
-    <div id="top">
-        <div id="img"><img src="@Url.Content("~/imageStaff/LogoHVnew1.png")" width=800px height="130px" /></div>
-        <div id="trangchu"><a href="@Url.Content("~/Home")" target="_self"><button class="btn"><i class="fa fa-home"></i>Home</button></a></div>
-        <div id="giaovien"><a href="@Url.Content("~/HomePage")" target="_blank"> <button class="btn">Giáo viên</button></a></div>
-        <div id="lienhe"> <a href="http://fit.mta.edu.vn/news/LIENHE" target="_blank"> <button class="btn">Liên hệ</button></a></a></div>
-        <div id="input-group">
-            <input type="text" class="form-control" placeholder="Search ...">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Tìm kiếm</button>
-            </span>
-        </div>
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<section name="modal">
+    <div class="modal fade" id="btn-login" tabindex="-1" role="dialog" aria-labelledby="btn-login" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="btn-login">Login Management</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background-color: #d3d3d330;">
+                    <div class="row">
+                        <div class="col-12">
+                            <section id="loginForm">
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <h5>Use a local account to log in.</h5>
+                                        <hr />
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                                <div class="col-md-8">
+                                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                                <div class="col-md-8">
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-offset-2 col-8">
+                                                    <div class="checkbox">
+                                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                                        @Html.LabelFor(m => m.RememberMe)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-8 col-offset-2">
+                                                    <input type="submit" value="Log in" class="btn primary-bg-color" />
+                                                    @Html.ActionLink("Forgotten Account?", "ForgotPassword", "Account", new { @class = "btn btn-default float-right" })
+                                                </div>
+                                            </div>
 
 
 
-
-    </div>
-
-
-
-
-    <div class="slideshow-container">
-
-
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="@Url.Content("~/imageStaff/imghome1.png")" style="width:100% ">
-
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img src="@Url.Content("~/imageStaff/maxresdefault.jpg")" style="width:100% ">
-
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img src="@Url.Content("~/imageStaff/hvktqs.jpg")" style="width:90% ">
-
-        </div>
-
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-
-
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
-    <div class="footer">
-        <div class="block">
-            <h5 style="color: white"> NHÓM 2-QUẢN LÝ GIÁO VIÊN-THỰC TẬP CƠ SỞ DỮ LIỆU-HỌC VIỆN KĨ THUẬT QUÂN SỰ </h5>
-            <p style="padding-left: 20px; color: white"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Địa chỉ: 236 Hoàng Quốc Việt, Cầu Giấy, Hà Nội </p>
-            <p style="padding-left: 20px; color: white"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span> Email: truongton97tb@gmail.com  </p>
-            <p style="padding-left: 20px; color: white"> <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> Điện thoại: 0964367495   </p>
+                                            @* Enable this once you have account confirmation enabled for password reset functionality
+                                                <p>
+                                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                                </p>*@
+                                }
+                            </section>
+                        </div>
+                        @*<div class="col-md-4">
+                                <section id="socialLoginForm">
+                                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                                </section>
+                            </div>*@
+                    </div>
+                </div>
+                @*<div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>*@
+            </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
-
-        var slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-
-
-    </script>
-</body>
-</html>
+</section>
