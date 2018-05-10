@@ -89,7 +89,7 @@
 
         body {
             min-width: 430px;
-            height: 100vh;
+            height: 80vh;
             max-width: 100vw;
             background-color: #d3d3d330;
 
@@ -193,7 +193,7 @@
         </nav>
     </section>
 
-    <div class="container-fluid col-lg-8 col-lg-offset-2 col-md-8 col-md-2 col-sm-10 col-sm-offset-1 col-xs-12">
+    <div class="container-fluid col-lg-8 col-lg-offset-2 col-md-8 col-md-2 col-sm-10 col-sm-offset-1 col-xs-12 h-100 w-100">
         @RenderBody()
     </div>
 
@@ -209,10 +209,12 @@
 
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
+    <script src="~/Scripts/tether.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootstrap-vue.js"></script>
     <script src="~/Scripts/polyfill.min.js"></script>
     <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/axios.min.js"></script>
     @RenderSection("scripts", required: false)
 
 </body>

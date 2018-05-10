@@ -138,6 +138,12 @@ namespace ManageStaff.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult test()
+        {
+            var data = db.Staffs;
+            return Json(data,JsonRequestBehavior.AllowGet);
+        }
+
         //protected override void Dispose(bool disposing)
         //{
         //    if (disposing)
