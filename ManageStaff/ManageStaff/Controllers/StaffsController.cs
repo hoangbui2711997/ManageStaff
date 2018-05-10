@@ -3,12 +3,13 @@ using System.Web.Mvc;
 using ManageStaff.Models;
 using ManageStaff.Data;
 using System.Net;
+using System;
 
 namespace ManageStaff.Controllers
 {
+    [Authorize]
     public class StaffsController : Controller
     {
-        private ManageStaffs db = ManageStaffs.GetInstance();
 
         // GET: Staffs
         public ActionResult Index()
@@ -17,9 +18,9 @@ namespace ManageStaff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //var staffs = db.Staffs.Include(s => s.Academic).Include(s => s.Degree).Include(s => s.EducationField).Include(s => s.Position);
+            //var staffs = ManageStaffs.GetInstance().Staffs.Include(s => s.Academic).Include(s => s.Degree).Include(s => s.EducationField).Include(s => s.Position);
             
-            return View(db.Staffs);
+            return View(ManageStaffs.GetInstance().Staffs);
         }
 
         // GET: Staffs/Details/5
@@ -30,7 +31,7 @@ namespace ManageStaff.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             }
-            Staff staff = db.Staffs.Find(e => e.Code == id);
+            Staff staff = ManageStaffs.GetInstance().Staffs.Find(e => e.Code == id);
 
             if (staff == null)
             {
@@ -42,10 +43,10 @@ namespace ManageStaff.Controllers
         // GET: Staffs/Create
         public ActionResult Create()
         {
-            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name");
-            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name");
-            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name");
-            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name");
+            ViewBag.AcademicCode = new SelectList(ManageStaffs.GetInstance().Academics, "Code", "Name");
+            ViewBag.DegreeCode = new SelectList(ManageStaffs.GetInstance().Degrees, "Code", "Name");
+            ViewBag.EducationFieldCode = new SelectList(ManageStaffs.GetInstance().EducationFields, "Code", "Name");
+            ViewBag.PositionCode = new SelectList(ManageStaffs.GetInstance().Positions, "Code", "Name");
             return View();
         }
 
@@ -58,15 +59,16 @@ namespace ManageStaff.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Staffs.Add(staff);
-                //db.SaveChanges();
+                //ManageStaffs.GetInstance().SaveChanges();
+                TuongTacSQL.DoStaff.DoInsert(staff);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name", staff.AcademicCode);
-            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name", staff.DegreeCode);
-            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name", staff.EducationFieldCode);
-            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name", staff.PositionCode);
+            ViewBag.AcademicCode = new SelectList(ManageStaffs.GetInstance().Academics, "Code", "Name", staff.AcademicCode);
+            ViewBag.DegreeCode = new SelectList(ManageStaffs.GetInstance().Degrees, "Code", "Name", staff.DegreeCode);
+            ViewBag.EducationFieldCode = new SelectList(ManageStaffs.GetInstance().EducationFields, "Code", "Name", staff.EducationFieldCode);
+            ViewBag.PositionCode = new SelectList(ManageStaffs.GetInstance().Positions, "Code", "Name", staff.PositionCode);
+
             return View(staff);
         }
 
@@ -77,15 +79,16 @@ namespace ManageStaff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Staff staff = db.Staffs.Find(e => e.Code == id);
+            Staff staff = ManageStaffs.GetInstance().Staffs.Find(e => e.Code == id);
             if (staff == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name", staff.AcademicCode);
-            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name", staff.DegreeCode);
-            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name", staff.EducationFieldCode);
-            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name", staff.PositionCode);
+            ViewBag.AcademicCode = new SelectList(ManageStaffs.GetInstance().Academics, "Code", "Name", staff.AcademicCode);
+            ViewBag.DegreeCode = new SelectList(ManageStaffs.GetInstance().Degrees, "Code", "Name", staff.DegreeCode);
+            ViewBag.EducationFieldCode = new SelectList(ManageStaffs.GetInstance().EducationFields, "Code", "Name", staff.EducationFieldCode);
+            ViewBag.PositionCode = new SelectList(ManageStaffs.GetInstance().Positions, "Code", "Name", staff.PositionCode);
+            
             return View(staff);
         }
 
@@ -98,17 +101,17 @@ namespace ManageStaff.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(staff).State = EntityState.Modified;
-                //db.SaveChanges();
-                var staffs = db.Staffs.FirstOrDefault(e => e.Code == staff.Code);
-                staffs = staff;
+                //ManageStaffs.GetInstance().Entry(staff).State = EntityState.Modified;
+                //ManageStaffs.GetInstance().SaveChanges();
+                //var staffs = ManageStaffs.GetInstance().Staffs.FirstOrDefault(e => e.Code == staff.Code);
 
+                TuongTacSQL.DoStaff.DoUpdate(staff);
                 return RedirectToAction("Index");
             }
-            ViewBag.AcademicCode = new SelectList(db.Academics, "Code", "Name", staff.AcademicCode);
-            ViewBag.DegreeCode = new SelectList(db.Degrees, "Code", "Name", staff.DegreeCode);
-            ViewBag.EducationFieldCode = new SelectList(db.EducationFields, "Code", "Name", staff.EducationFieldCode);
-            ViewBag.PositionCode = new SelectList(db.Positions, "Code", "Name", staff.PositionCode);
+            ViewBag.AcademicCode = new SelectList(ManageStaffs.GetInstance().Academics, "Code", "Name", staff.AcademicCode);
+            ViewBag.DegreeCode = new SelectList(ManageStaffs.GetInstance().Degrees, "Code", "Name", staff.DegreeCode);
+            ViewBag.EducationFieldCode = new SelectList(ManageStaffs.GetInstance().EducationFields, "Code", "Name", staff.EducationFieldCode);
+            ViewBag.PositionCode = new SelectList(ManageStaffs.GetInstance().Positions, "Code", "Name", staff.PositionCode);
             return View(staff);
         }
 
@@ -119,7 +122,7 @@ namespace ManageStaff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Staff staff = db.Staffs.Find(e => e.Code == id);
+            Staff staff = ManageStaffs.GetInstance().Staffs.Find(e => e.Code == id);
             if (staff == null)
             {
                 return HttpNotFound();
@@ -132,15 +135,16 @@ namespace ManageStaff.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Staff staff = db.Staffs.Find(e => e.Code == id);
-            db.Staffs.Remove(staff);
-            //db.SaveChanges();
+            Staff staff = ManageStaffs.GetInstance().Staffs.Find(e => e.Code == id);
+            //ManageStaffs.GetInstance().SaveChanges();
+
+            TuongTacSQL.DoStaff.DoDelete(id);
             return RedirectToAction("Index");
         }
 
         public JsonResult test()
         {
-            var data = db.Staffs;
+            var data = ManageStaffs.GetInstance().Staffs;
             return Json(data,JsonRequestBehavior.AllowGet);
         }
 
@@ -148,7 +152,7 @@ namespace ManageStaff.Controllers
         //{
         //    if (disposing)
         //    {
-        //        db.Dispose();
+        //        ManageStaffs.GetInstance().Dispose();
         //    }
         //    base.Dispose(disposing);
         //}

@@ -194,6 +194,7 @@
     <Compile Include="Data\DoWithSql.cs" />
     <Compile Include="Data\MakeConnection.cs" />
     <Compile Include="Data\ManageStaffs.cs" />
+    <Compile Include="Data\TuongTacSQL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

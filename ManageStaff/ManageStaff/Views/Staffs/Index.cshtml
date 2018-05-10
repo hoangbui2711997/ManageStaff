@@ -11,39 +11,38 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th width="8.33">
             Học hàm
         </th>
-        <th>
+        <th width="8.33">
             Học vị
         </th>
-        <th>
+        <th width="8.33">
             Bộ môn
         </th>
-        <th>
+        <th width="8.33">
             Chức vụ
         </th>
-        <th>
+        <th width="8.33">
             Tên đầy đủ
         </th>
-        <th>
+        <th width="8.33">
             Điện thoại
         </th>
-        <th>
+        <th width="8.33">
             Thư điện tử
         </th>
-        <th>
+        <th width="16.66">
             Sở thích nghiên cứu
         </th>
-        <th>
+        <th width="8.33">
             Ảnh
         </th>
-        <th></th>
+        <th width="16.66"></th>
     </tr>
-
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td width="8.33">
             @if (item.Academic != null && item.Academic.Name != null)
             {
                 @Html.DisplayFor(modelItem => item.Academic.Name)
@@ -53,7 +52,7 @@
                 <span style="color: red;">Chưa có thông tin</span>
             }
         </td>
-        <td>
+        <td class="col-1">
             @if(item.Degree != null && item.Degree.Name != null)
             {
                 @Html.DisplayFor(modelItem => item.Degree.Name)
@@ -63,7 +62,7 @@
                 <span style="color: red;">Chưa có thông tin</span>
             }
         </td>
-        <td>
+        <td class="col-1">
             @if (item.EducationField != null && item.EducationField.Name != null)
             {
                 @Html.DisplayFor(modelItem => item.EducationField.Name)
@@ -73,7 +72,7 @@
                 <span style="color: red;">Chưa có thông tin</span>
             }
         </td>
-        <td>
+        <td class="col-1">
             @if (item.Position.Name != null)
             {
                 @Html.DisplayFor(modelItem => item.Position.Name)
@@ -83,7 +82,7 @@
                 <span style="color: red;">Chưa có thông tin</span>
             }
         </td>
-        <td>
+        <td class="col-1">
             @if(item.Name != null)
             {
                 @Html.DisplayFor(modelItem => item.Name)
@@ -93,7 +92,7 @@
                 <span style="color: red;">Chưa có thông tin</span>
             }
         </td>
-        <td>
+        <td class="col-1">
             @if (item.PhoneNumber != null)
             {
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
@@ -103,13 +102,13 @@
                 <span style="color: red;">Chưa có thông tin</span>
             }
         </td>
-        <td>
+        <td class="col-1">
             @if (item.Email != null)
             {
                 @Html.DisplayFor(modelItem => item.Email)
             }
         </td>
-        <td>
+        <td width="16.66">
             @if (item.ResearchInterests != null)
             {
                 @Html.DisplayFor(modelItem => item.ResearchInterests)
@@ -119,7 +118,7 @@
                 <span style="color: red;">Chưa có thông tin</span>
             }
         </td>
-        <td>
+        <td class="col-1">
             @if (item.ImageStaff != null)
             {
                 <img style="max-height:150px; max-width: 80px;" src="@Url.Content(item.ImageStaff)" />
@@ -130,7 +129,7 @@
             }
 
         </td>
-        <td>
+        <td width="16.66">
             @Html.ActionLink("Edit", "Edit", new { id=item.Code }) |
             @Html.ActionLink("Details", "Details", new { id=item.Code }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Code })

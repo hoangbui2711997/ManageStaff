@@ -10,6 +10,39 @@ namespace ManageStaff.Data
     public class DoWithSql
     {
         private static SqlConnection connection = MakeConnection.GetInstance().GetSqlConnection();
+
+        /// <summary>
+        /// Khong tra ve gi ca
+        /// </summary>
+        public static void DoVoidQuery(String query)
+        {
+            try
+            {
+                // Truyen gia tri cho cmd
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.CommandText = query;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+
+                // Mo truy van
+                connection.Open();
+
+                cmd.ExecuteReader();
+                // dong truy van
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Tra ve du lieu
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public static DataTable DoQuery(String query)
         {
             try
