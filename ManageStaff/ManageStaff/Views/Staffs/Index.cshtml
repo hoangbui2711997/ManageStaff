@@ -9,6 +9,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<button onclick="testAjax()">
+    Test
+</button>
+
+
 <table class="table">
     <tr>
         <th width="8.33">
@@ -138,3 +144,30 @@
 }
 
 </table>
+
+@section scripts {
+    <script>
+        var temp;
+        function testAjax() {
+            console.log("124")
+            axios.get('@Url.Action("TestSearch", "Staffs", new { bomon = "Xung"})', {
+                //bomon: 'Xung'
+            })
+                    .then(function (response) {
+                        //console.log(response)
+                        //Vue1.$data.message = 'Lock Success'
+                        //Vue1.$data.cssClass = 'alert alert-info do-animation text-center'
+                        //console.log(this.message)
+                        //console.log(this.cssClass)
+                        console.log(response)
+                        temp = response
+                    })
+                    .catch(function (error) {
+                        //console.log(error);
+                        //Vue1.$data.message = 'Lock Failed'
+                        //Vue1.$data.cssClass = 'alert alert-warning do-animation text-center'
+                        console.log(response)
+                    });
+        }
+    </script>
+}

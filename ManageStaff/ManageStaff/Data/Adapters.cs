@@ -41,6 +41,7 @@ namespace ManageStaff.Data
                     PhoneNumber = m.Field<String>("Phonenumber"),
                     ResearchInterests = m.Field<String>("Researchinterests"),
                     Email = m.Field<String>("Email"),
+                    SortBio = m.Field<String>("ShortBio"),
                     Degree = degrees.ToList().Find(e => e.Code == m.Field<String>("Degreecode")),
                     Academic = academics.ToList().Find(e => e.Code == m.Field<String>("Academicode")),
                     Position = positions.ToList().Find(e => e.Code == m.Field<String>("PositionCode")),
@@ -106,6 +107,9 @@ namespace ManageStaff.Data
                 }).ToList();
 
                 Adapters.faculties = faculties;
+            } else if ("Course".Equals(nameModel))
+            {
+
             }
         }
 

@@ -11,6 +11,16 @@ namespace ManageStaff.Models
         [Required, StringLength(10), Key]
         public String Code { get; set; }
 
+        [Required, StringLength(10), Key]
+        public String StaffCode { get; set; }
+
+        [Required, StringLength(10), Key]
+        public String LeaderCode { get; set; }
+
+        public Staff Staff { get; set; }
+
+        public Staff Leader { get; set; }
+
         [Required, StringLength(50)]
         public String Name { get; set; }
 
@@ -30,7 +40,7 @@ namespace ManageStaff.Models
         public String Rank { get; set; }
 
         public ICollection<StaffProjectResearch> StaffProjectResearchs { get; set; }
-
+        
         public ResearchProject()
         {
             StaffProjectResearchs = new List<StaffProjectResearch>();

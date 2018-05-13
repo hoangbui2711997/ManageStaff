@@ -4,6 +4,7 @@ using ManageStaff.Models;
 using ManageStaff.Data;
 using System.Net;
 using System;
+using System.Collections.Generic;
 
 namespace ManageStaff.Controllers
 {
@@ -21,6 +22,14 @@ namespace ManageStaff.Controllers
             //var staffs = ManageStaffs.GetInstance().Staffs.Include(s => s.Academic).Include(s => s.Degree).Include(s => s.EducationField).Include(s => s.Position);
             
             return View(ManageStaffs.GetInstance().Staffs);
+        }
+
+        public JsonResult TestSearch(string bomon)
+        {
+            List<Staff> staffs = ManageStaffs.GetInstance().Staffs.FindAll(
+
+                e =>  (e.EducationField!= null && e.EducationField.Name.Contains(bomon)));
+            return Json(staffs, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Staffs/Details/5
@@ -99,6 +108,7 @@ namespace ManageStaff.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Code,Name,DegreeCode,AcademicCode,PositionCode,EducationFieldCode,PhoneNumber,Email,ResearchInterests,ImageStaff")] Staff staff)
         {
+            staff.SortBio = "";
             if (ModelState.IsValid)
             {
                 //ManageStaffs.GetInstance().Entry(staff).State = EntityState.Modified;

@@ -13,7 +13,7 @@
 //{
 //    public class DegreesController : Controller
 //    {
-//        private ManageStaffs db = new ManageStaffs();
+//        private ManageStaffs db = ManageStaffs.GetInstance();
 
 //        // GET: Degrees
 //        public ActionResult Index()
@@ -28,7 +28,7 @@
 //            {
 //                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 //            }
-//            Degree degree = db.Degrees.Find(id);
+//            Degree degree = db.Degrees.Find(e => e.Code == id);
 //            if (degree == null)
 //            {
 //                return HttpNotFound();
@@ -52,7 +52,8 @@
 //            if (ModelState.IsValid)
 //            {
 //                db.Degrees.Add(degree);
-//                db.SaveChanges();
+                
+//                //db.SaveChanges();
 //                return RedirectToAction("Index");
 //            }
 

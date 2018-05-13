@@ -50,6 +50,9 @@ namespace ManageStaff.Models
 
         [Required, DataType(DataType.ImageUrl)]
         public String ImageStaff { get; set; }
+
+        //[Required, MaxLength(800)]
+        public String SortBio { get; set; }
         //[StringLength(10)]
         //public ICollection<ImageStaff> ImageStaffs { get; set; }
 
