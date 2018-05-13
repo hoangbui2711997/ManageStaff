@@ -33,7 +33,7 @@ namespace ManageStaff.Data
         //    //base.OnModelCreating(modelBuilder);
         //}
 
-        public DataTable Graduatings { get; set; }
+        public List<Graduating> Graduatings { get; set; }
 
         private static ManageStaffs getInstance;
 
